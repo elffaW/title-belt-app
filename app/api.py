@@ -1,8 +1,9 @@
 from typing import Optional
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Request
 from fastapi.staticfiles import StaticFiles
 from title_belt_nhl.schedule import Schedule
+from title_belt_nhl.utils import ExcelDate
 
 from app import templates
 from app.models import NhlTeams
@@ -10,14 +11,19 @@ from app.models import NhlTeams
 router = APIRouter(prefix="/api")
 
 @router.get("/belt_holder")
-async def get_belt_holder():
+async def get_belt_holder(request: Request):
     schedule = Schedule("")
     holder = schedule.belt_holder
 
-    return {"holder": holder, "season": schedule.season}
+    context = {
+        "request": request,
+        "belt_holder": holder,
+        "season": schedule.season,
+    }
+    return templates.TemplateResponse("home.html", context)
 
 @router.get("/path/{team_id}")
-async def get_path_to_belt(team_id: NhlTeams):
+async def get_path_to_belt(team_id: NhlTeams, request: Request):
     if team_id not in NhlTeams:
         raise HTTPException(status_code=404, detail=f"Team {team_id} not found")
 
@@ -26,14 +32,31 @@ async def get_path_to_belt(team_id: NhlTeams):
 
     path = schedule.find_nearest_path([holder], holder)
     games = path.split("vs")
+    num_games = len(games) - 1
 
-    return {
-        "holder": holder,
-        "numGames": len(games) - 1,
-        "team": team_id,
+    path_games = path.split("] ->")
+    path_games = [g.replace("]", "").replace("[", "") for g in path_games]
+
+    # path_games = schedule.games[:num_games]
+    # path_games = []
+    # for game in schedule.games:
+    #     useful_date = ExcelDate(serial_date=game.date)
+    #     game.date_obj = useful_date.date_obj
+    #     path_games.append(game)
+    #     if game.home == holder or game.away == holder:
+    #         break    
+
+    context = {
+        "request": request,
+        "belt_holder": holder,
+        "numGames": num_games,
         "path": path,
+        "team": team_id.value,
+        "season": schedule.season,
+        "games": path_games,
     }
+    return templates.TemplateResponse("team.html", context)
 
 @router.get("/teams")
 def get_teams():
-    return [t for t in NhlTeams]
+    return [t.value for t in NhlTeams]

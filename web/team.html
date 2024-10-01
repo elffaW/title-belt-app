@@ -1,5 +1,15 @@
-<div class="team-content">
-    <p hx-get="/teams">
-        {{ team }}
-    </p>
+<div class="team-content" hx-get="api/path/{{team}}" hx-trigger="click">
+  <p>
+    {{ team }}
+  </p>
+  <ul>
+    <li>
+      <p>Minimum {{ numGames }} games</p>
+      <ul>
+        {% for game in games %}
+          {% include "game.html" %}
+        {% endfor %}
+      </ul>
+    </li>
+  </ul>
 </div>

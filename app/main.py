@@ -1,8 +1,10 @@
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.staticfiles import StaticFiles
+from title_belt_nhl.schedule import Schedule
 
 from app import templates
 from app import api
+from app.models import NhlTeams
 
 app = FastAPI()
 
@@ -12,14 +14,20 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 def _build_full_page_context(request: Request):
-  teams = []
-  selected_team = ""
+    teams = [t.value for t in NhlTeams]
+    selected_team = ""
+    schedule = Schedule("")
+    holder = schedule.belt_holder
 
-  return {
-    "request": request,
-    "teams": teams,
-    "selected_team": selected_team
-  }
+    return {
+        "request": request,
+        "belt_holder": holder,
+        "numGames": "",
+        "path": "",
+        "teams": teams,
+        "team": selected_team,
+        "season": schedule.season,
+    }
 
 
 # def _get_reminders_grid(request: Request):
