@@ -1,35 +1,35 @@
 from enum import Enum
 
 class NhlTeams(str, Enum):
-    NJD
-    BUF
-    STL
-    BOS
-    CHI
-    TOR
-    NYR
-    WPG
-    CGY
-    COL
-    MTL
-    LAK
-    FLA
-    PIT
-    UTA
-    DAL
-    CBJ
-    TBL
-    PHI
-    OTT
-    NSH
-    CAR
-    NYI
-    SEA
-    ANA
-    MIN
-    DET
-    VAN
-    VGK
-    SJS
-    EDM
-    WSH
+    NJD = "NJD"
+    BUF = "BUF"
+    STL = "STL"
+    BOS = "BOS"
+    CHI = "CHI"
+    TOR = "TOR"
+    NYR = "NYR"
+    WPG = "WPG"
+    CGY = "CGY"
+    COL = "COL"
+    MTL = "MTL"
+    LAK = "LAK"
+    FLA = "FLA"
+    PIT = "PIT"
+    UTA = "UTA"
+    DAL = "DAL"
+    CBJ = "CBJ"
+    TBL = "TBL"
+    PHI = "PHI"
+    OTT = "OTT"
+    NSH = "NSH"
+    CAR = "CAR"
+    NYI = "NYI"
+    SEA = "SEA"
+    ANA = "ANA"
+    MIN = "MIN"
+    DET = "DET"
+    VAN = "VAN"
+    VGK = "VGK"
+    SJS = "SJS"
+    EDM = "EDM"
+    WSH = "WSH"
