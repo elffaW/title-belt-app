@@ -14,14 +14,14 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 def _build_full_page_context(request: Request):
-    teams = [t.value for t in NhlTeams]
+    teams = [t for t in NhlTeams]
     selected_team = ""
     schedule = Schedule("")
     holder = schedule.belt_holder
 
     return {
         "request": request,
-        "belt_holder": holder,
+        "belt_holder": NhlTeams[holder].value,
         "numGames": "",
         "path": "",
         "teams": teams,
