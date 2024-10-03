@@ -1,9 +1,5 @@
-from typing import Optional
-
 from fastapi import APIRouter, HTTPException, Request
-from fastapi.staticfiles import StaticFiles
 from title_belt_nhl.schedule import Schedule
-from title_belt_nhl.utils import ExcelDate
 
 from app import templates
 from app.models import NhlTeams

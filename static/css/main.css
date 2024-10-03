@@ -6,7 +6,12 @@ body {
     background-color: aliceblue;
     border: 4rem solid #ffe037;
     border-radius: 50px;
-    padding: 1rem;
+}
+
+.main-content {
+    border: 1rem solid aliceblue;
+    border-radius: 1rem;
+    margin: -1rem;
 }
 
 hr {

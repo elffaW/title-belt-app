@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from title_belt_nhl.schedule import Schedule
 
@@ -28,11 +28,6 @@ def _build_full_page_context(request: Request):
         "team": selected_team,
         "season": schedule.season,
     }
-
-
-# def _get_reminders_grid(request: Request):
-#   context = _build_full_page_context(request)
-#   return templates.TemplateResponse("partials/reminders/content.html", context)
 
 
 @app.get("/")
