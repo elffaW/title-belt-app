@@ -1,6 +1,6 @@
 # Title Belt App
 
-FastAPI service for NHL title belt app (see [title-belt-nhl](github.com/kawa2287/title-belt-nhl)).
+FastAPI service and website for NHL title belt app (see [title-belt-nhl](github.com/kawa2287/title-belt-nhl)).
 
 ## Where??
 
