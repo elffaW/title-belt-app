@@ -3,7 +3,7 @@
     {{ team.value }}
   </button>
   <ul>
-    {% if numGames %}
+    {% if numGames > 0 %}
       <li>
         <p>Minimum {{ numGames }} games</p>
         <ul>
@@ -12,6 +12,8 @@
           {% endfor %}
         </ul>
       </li>
+    {% elif numGames == 0 %}
+      <p>Already has the belt!</p>
     {% endif %}
   </ul>
 </div>

@@ -26,31 +26,28 @@ async def get_path_to_belt(team_id: str, request: Request):
     schedule = Schedule(team_id)
     holder = schedule.belt_holder
 
-    path = schedule.find_nearest_path([holder], holder)
-    games = path.split("vs")
-    num_games = len(games) - 1
+    if team_id == schedule.belt_holder:
+        context = {
+            "request": request,
+            "belt_holder": NhlTeams[holder].value,
+            "numGames": 0,
+            "team": NhlTeams[team_id],
+            "season": schedule.get_season_pretty(),
+            "games": [],
+        }
+    else:
+        path_games = schedule.find_nearest_path_games()
+        num_games = len(path_games)
 
-    path_games = path.split("] ->")
-    path_games = [g.replace("]", "").replace("[", "") for g in path_games]
+        context = {
+            "request": request,
+            "belt_holder": NhlTeams[holder].value,
+            "numGames": num_games,
+            "team": NhlTeams[team_id],
+            "season": schedule.get_season_pretty(),
+            "games": path_games,
+        }
 
-    # path_games = schedule.games[:num_games]
-    # path_games = []
-    # for game in schedule.games:
-    #     useful_date = ExcelDate(serial_date=game.date)
-    #     game.date_obj = useful_date.date_obj
-    #     path_games.append(game)
-    #     if game.home == holder or game.away == holder:
-    #         break    
-
-    context = {
-        "request": request,
-        "belt_holder": NhlTeams[holder].value,
-        "numGames": num_games,
-        "path": path,
-        "team": NhlTeams[team_id],
-        "season": schedule.season,
-        "games": path_games,
-    }
     return templates.TemplateResponse("team.html", context)
 
 @router.get("/teams")

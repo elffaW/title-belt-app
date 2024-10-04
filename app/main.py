@@ -22,11 +22,10 @@ def _build_full_page_context(request: Request):
     return {
         "request": request,
         "belt_holder": NhlTeams[holder].value,
-        "numGames": "",
-        "path": "",
+        "numGames": -1,
         "teams": teams,
         "team": selected_team,
-        "season": schedule.season,
+        "season": schedule.get_season_pretty(),
     }
 
 
