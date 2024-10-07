@@ -36,7 +36,7 @@ async def get_path_to_belt(team_id: str, request: Request):
             "games": [],
         }
     else:
-        path_games = schedule.find_nearest_path_games()
+        path_games = schedule.find_nearest_path_v2()
         num_games = len(path_games)
 
         context = {

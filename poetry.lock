@@ -892,6 +892,26 @@ typing-extensions = {version = ">=4.0.0,<5.0", markers = "python_version < \"3.1
 jupyter = ["ipywidgets (>=7.5.1,<9)"]
 
 [[package]]
+name = "rich-click"
+version = "1.8.3"
+description = "Format click help output nicely with rich"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "rich_click-1.8.3-py3-none-any.whl", hash = "sha256:636d9c040d31c5eee242201b5bf4f2d358bfae4db14bb22ec1cafa717cfd02cd"},
+    {file = "rich_click-1.8.3.tar.gz", hash = "sha256:6d75bdfa7aa9ed2c467789a0688bc6da23fbe3a143e19aa6ad3f8bac113d2ab3"},
+]
+
+[package.dependencies]
+click = ">=7"
+rich = ">=10.7"
+typing-extensions = "*"
+
+[package.extras]
+dev = ["mypy", "packaging", "pre-commit", "pytest", "pytest-cov", "rich-codex", "ruff", "types-setuptools"]
+docs = ["markdown-include", "mkdocs", "mkdocs-glightbox", "mkdocs-material-extensions", "mkdocs-material[imaging] (>=9.5.18,<9.6.0)", "mkdocs-rss-plugin", "mkdocstrings[python]", "rich-codex"]
+
+[[package]]
 name = "ruff"
 version = "0.6.9"
 description = "An extremely fast Python linter and code formatter, written in Rust."
@@ -959,18 +979,19 @@ full = ["httpx (>=0.22.0)", "itsdangerous", "jinja2", "python-multipart (>=0.0.7
 
 [[package]]
 name = "title-belt-nhl"
-version = "0.2.0"
+version = "0.3.0"
 description = ""
 optional = false
 python-versions = "<4.0,>=3.10"
 files = [
-    {file = "title_belt_nhl-0.2.0-py3-none-any.whl", hash = "sha256:25502bd7d76cc385a8f3c145eb5a1c9334f82afa6a710fe46a913f335aac2150"},
-    {file = "title_belt_nhl-0.2.0.tar.gz", hash = "sha256:ef3775ae6d6865b04f583021848e9faa0b99bcc01709b57501ad0621ad7b0878"},
+    {file = "title_belt_nhl-0.3.0-py3-none-any.whl", hash = "sha256:b1e7914e8a070c16a0483234bfd78618f0371e9dff7b29f5470597be02d11a03"},
+    {file = "title_belt_nhl-0.3.0.tar.gz", hash = "sha256:604606fa47887dc0d5d8bf9e56f95a8079a8100c7976d1aa71068116d9bcdfe6"},
 ]
 
 [package.dependencies]
 click = ">=8.1.7,<9.0.0"
 requests = ">=2.32.3,<3.0.0"
+rich-click = ">=1.8.3,<2.0.0"
 
 [[package]]
 name = "typer"
@@ -1367,4 +1388,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "a56d4adc619bac67f174bbed377a11431ff8dc3b8f10c9329960c5a814be9ef9"
+content-hash = "151fea80dbe4800c8786b01ff427d6df22142f3c71403e07c5671beb11bd6e68"
