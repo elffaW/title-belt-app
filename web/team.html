@@ -1,19 +1,17 @@
-<div class="team-content" hx-get="api/path/{{team.name}}" hx-trigger="click">
-  <button>
+<div id="{{team.name}}-content">
+  <button hx-get="api/path/{{team.name}}" hx-trigger="click" hx-target="#{{team.name}}-content">
     {{ team.value }}
   </button>
-  <ul>
+  <div>
     {% if numGames > 0 %}
-      <li>
-        <p>Minimum {{ numGames }} games</p>
-        <ul>
-          {% for game in games %}
-          {% include "game.html" %}
-          {% endfor %}
-        </ul>
-      </li>
+      <p>Minimum {{ numGames }} games</p>
+      <div class="team-shortest-path">
+        {% for game_list in games %}
+          {% include "games_row.html" %}
+        {% endfor %}
+      </div>
     {% elif numGames == 0 %}
       <p>Already has the belt!</p>
     {% endif %}
-  </ul>
+  </div>
 </div>

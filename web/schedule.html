@@ -1,0 +1,8 @@
+<div id="schedule-content" hx-get="api/schedule/{{team.name}}">
+  <h3>{{ team }} Schedule</h3>
+  {% for game in schedule %}
+  <div>
+    {% include "game.html" %}
+  </div>
+  {% endfor %}
+</div>

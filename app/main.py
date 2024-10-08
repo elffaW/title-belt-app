@@ -15,9 +15,9 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 def _build_full_page_context(request: Request):
     teams = [t for t in NhlTeams]
-    selected_team = ""
     schedule = Schedule("")
     holder = schedule.belt_holder
+    selected_team = holder
 
     return {
         "request": request,
@@ -26,6 +26,7 @@ def _build_full_page_context(request: Request):
         "teams": teams,
         "team": selected_team,
         "season": schedule.get_season_pretty(),
+        "schedule": [],
     }
 
 
