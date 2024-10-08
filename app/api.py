@@ -36,8 +36,15 @@ async def get_path_to_belt(team_id: str, request: Request):
             "games": [],
         }
     else:
-        path_games = schedule.find_nearest_path_v2()
+        path_games = schedule.find_nearest_path_games()
         num_games = len(path_games)
+        # for depth, match_list in enumerate(path_games):
+        #     print(f"{depth}: {len(match_list)}")
+        #     for match in match_list:
+        #         on_path = "*" if match.on_shortest_path else ""
+        #         print(
+        #             f"\t{match.date_obj} | {match.belt_holder} -> {match} {on_path}"
+        #         )
 
         context = {
             "request": request,
@@ -49,6 +56,21 @@ async def get_path_to_belt(team_id: str, request: Request):
         }
 
     return templates.TemplateResponse("team.html", context)
+
+@router.get("/schedule/{team_id}")
+def get_schedule(team_id: str, request: Request):
+    if team_id not in [t for t in NhlTeams.__members__.keys()]:
+        raise HTTPException(status_code=404, detail=f"Team {team_id} not found")
+
+    games = Schedule(team_id).get_matches_for_team(team_id)
+
+    context = {
+        "request": request,
+        "team": NhlTeams[team_id],
+        "schedule": games,
+    }
+
+    return templates.TemplateResponse("schedule.html", context)
 
 @router.get("/teams")
 def get_teams():

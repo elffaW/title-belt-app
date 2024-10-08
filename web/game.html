@@ -1,5 +1,21 @@
-<li class="game-content">
-  <p>
-    [{{ game.date_obj }}] {{ game.home }} vs {{ game.away }} (belt holder: {{ game.belt_holder }})
-  </p>
-</li>
+
+<!-- <div class="pre-game">
+    <p class="pre-left">
+      {% if game.home_last %}left{% else %}???{% endif %}
+    </p>
+  {% if game.away_last %}
+    <p class="pre-right">right</p>
+  {% endif %}
+</div> -->
+<div class="game-content {{ 'on-shortest-path' if game.on_shortest_path else '' }}">
+  <div class="game-versus">
+    {% if game.home == game.belt_holder %}
+      [<span class="team">{{ game.home }}</span>] vs <span class="team">{{ game.away }}</span>
+    {% elif game.away == game.belt_holder %}
+      <span class="team">{{ game.home }}</span> vs [<span class="team">{{ game.away }}</span>]
+    {% endif %}
+  </div>
+  <div class="game-date">
+    {{ game.date_obj }}
+  </div>
+</div>
