@@ -53,6 +53,9 @@ jobs:
       uses: 'google-github-actions/deploy-cloudrun@v2'
       with:
         service: title-belt-app
+        env_vars: |-
+          IMAGE=$IMAGE
+          IMAGE_TAG=$IMAGE_TAG
         region: ${{ secrets.GCP_REGION }}
         image: "${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_GAR_REPOSITORY }}/$IMAGE:$IMAGE_TAG"
     
