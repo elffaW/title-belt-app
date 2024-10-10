@@ -7,6 +7,7 @@ body {
     border: 4rem solid #ffe037;
     border-radius: 50px;
     font-family: roboto, sans;
+    font-variant: small-caps;
 }
 
 hr {
@@ -30,6 +31,13 @@ button {
     margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
+    font-variant: small-caps;
+    font-family: roboto, sans;
+}
+
+.h5-small {
+    font-size: small;
+    font-weight: 700;
 }
 
 /* CONTENT */
@@ -39,14 +47,51 @@ button {
     margin: -1rem;
 }
 
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-left: 1rem;
+}
+.belt-holder-info {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+.belt-holder-info > .belt-holder > h4 {
+    margin-top: -0.15rem;
+}
+.belt-holder-info > .belt-holder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 2rem;
+}
+
+.belt-holder-info > .belt-holder-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.belt-holder-details > .game-content {
+    margin: 0;
+}
+
+.team-content {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
 .team-shortest-path {
     overflow-x: scroll;
+    margin-bottom: 1rem;
 }
 
 .games-row {
     display: flex;
-    margin-bottom: 1rem;
     align-items: center;
+    margin-bottom: 0.5rem;
 }
 
 /* .games-path > .pre-game {
@@ -62,13 +107,13 @@ button {
 .games-path > .pre-game > p {
     flex: auto;
 } */
-
 .game-content {
     display: flex;
     align-items: center;
     flex-direction: column;
     border: 2px solid darkgray;
-    margin-left: 1rem;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
     padding: 0.5rem;
     width: 8rem;
     min-width: 8rem;
@@ -109,4 +154,7 @@ button {
 }
 .team-logo-icon {
     width: 2rem;
+}
+.team-logo {
+    width: 4rem;
 }

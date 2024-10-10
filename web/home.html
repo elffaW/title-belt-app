@@ -14,12 +14,24 @@
     <h1>NHL Title Belt {{ season }}</h1>
     <hr class="blue" />
     <h3>Current Belt Holder</h3>
-    <p>
-      <img src="https://assets.nhle.com/logos/nhl/svg/{{belt_holder.name}}_light.svg" class="team-logo-icon" alt="{{ belt_holder.value }}" />
-      {{ belt_holder.value }}
-    </p>
+    <div class="content-container">
+      <div class="belt-holder-info">
+        <div class="belt-holder">
+          <img src="https://assets.nhle.com/logos/nhl/svg/{{belt_holder.name}}_light.svg" class="team-logo" alt="{{ belt_holder.value }}" />
+          <h4>
+            {{ belt_holder.value }}
+          </h4>
+        </div>
+        <div class="belt-holder-details">
+          <span class="h5-small">Next Title Bout</span>
+          {% with game=next_bout %}
+            {% include "game.html" %}
+          {% endwith %}
+        </div>
+      </div>
+    </div>
     <hr class="red" />
-    <h4>All Teams</h4>
+    <h3>All Teams</h3>
     <div id="teams-list">
       {% for team in teams %}
         {% include "team.html" %}

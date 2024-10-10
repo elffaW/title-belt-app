@@ -14,7 +14,7 @@ async def get_belt_holder(request: Request):
     context = {
         "request": request,
         "belt_holder": NhlTeams[holder],
-        "season": schedule.season,
+        "season": schedule.get_season_pretty(),
     }
     return templates.TemplateResponse("home.html", context)
 

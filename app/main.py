@@ -27,6 +27,7 @@ def _build_full_page_context(request: Request):
         "team": selected_team,
         "season": schedule.get_season_pretty(),
         "schedule": [],
+        "next_bout": schedule.find_match(holder, schedule.from_date),
     }
 
 
