@@ -21,7 +21,7 @@ def _build_full_page_context(request: Request):
 
     return {
         "request": request,
-        "belt_holder": NhlTeams[holder].value,
+        "belt_holder": NhlTeams[holder],
         "numGames": -1,
         "teams": teams,
         "team": selected_team,
