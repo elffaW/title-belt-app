@@ -46,6 +46,7 @@ body {
     margin-left: 1rem;
     padding: 0.5rem;
     width: 8rem;
+    min-width: 8rem;
 }
 .game-content.on-shortest-path {
     border: 3px solid blue;
