@@ -38,6 +38,9 @@ async def get_path_to_belt(team_id: str, request: Request):
     else:
         path_games = schedule.find_nearest_path_games()
         num_games = len(path_games)
+        sorted_path = []
+        for match_list in path_games:
+            sorted_path.append(sorted(match_list, key=lambda g: g.on_shortest_path, reverse=True))
         # for depth, match_list in enumerate(path_games):
         #     print(f"{depth}: {len(match_list)}")
         #     for match in match_list:
@@ -52,7 +55,7 @@ async def get_path_to_belt(team_id: str, request: Request):
             "numGames": num_games,
             "team": NhlTeams[team_id],
             "season": schedule.get_season_pretty(),
-            "games": path_games,
+            "games": sorted_path,
         }
 
     return templates.TemplateResponse("team.html", context)
