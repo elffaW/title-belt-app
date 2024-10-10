@@ -18,6 +18,9 @@ jobs:
   build:
     name: Docker build
     runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      id-token: 'write'
 
     steps:
     - name: Checkout
@@ -27,14 +30,7 @@ jobs:
       run: |-
         docker build \
           --tag "${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_GAR_REPOSITORY }}/$IMAGE:$IMAGE_TAG" .
-  
-  push:
-    name: Docker push
-    needs:
-    - build
-    runs-on: ubuntu-latest
 
-    steps:
     - id: 'auth'
       name: 'Authenticate to Google Cloud'
       uses: 'google-github-actions/auth@v2'
@@ -53,16 +49,6 @@ jobs:
       run: |-
         docker push "${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_GAR_REPOSITORY }}/$IMAGE:$IMAGE_TAG"
 
-  deploy-image:
-    name: Cloud Run deploy
-    needs:
-    - push
-    runs-on: ubuntu-latest
-    permissions:
-      contents: 'read'
-      id-token: 'write'
-
-    steps:
     - id: 'deploy'
       uses: 'google-github-actions/deploy-cloudrun@v2'
       with:
