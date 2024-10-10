@@ -13,7 +13,7 @@ async def get_belt_holder(request: Request):
 
     context = {
         "request": request,
-        "belt_holder": NhlTeams[holder].value,
+        "belt_holder": NhlTeams[holder],
         "season": schedule.season,
     }
     return templates.TemplateResponse("home.html", context)
@@ -29,7 +29,7 @@ async def get_path_to_belt(team_id: str, request: Request):
     if team_id == schedule.belt_holder:
         context = {
             "request": request,
-            "belt_holder": NhlTeams[holder].value,
+            "belt_holder": NhlTeams[holder],
             "numGames": 0,
             "team": NhlTeams[team_id],
             "season": schedule.get_season_pretty(),
@@ -51,7 +51,7 @@ async def get_path_to_belt(team_id: str, request: Request):
 
         context = {
             "request": request,
-            "belt_holder": NhlTeams[holder].value,
+            "belt_holder": NhlTeams[holder],
             "numGames": num_games,
             "team": NhlTeams[team_id],
             "season": schedule.get_season_pretty(),

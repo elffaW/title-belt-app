@@ -13,8 +13,11 @@
   <div class="main-content">
     <h1>NHL Title Belt {{ season }}</h1>
     <hr class="blue" />
-    <h3>Current Holder</h3>
-    <p>{{ belt_holder }}</p>
+    <h3>Current Belt Holder</h3>
+    <p>
+      <img src="https://assets.nhle.com/logos/nhl/svg/{{belt_holder.name}}_light.svg" class="team-logo-icon" alt="{{ belt_holder.value }}" />
+      {{ belt_holder.value }}
+    </p>
     <hr class="red" />
     <h4>All Teams</h4>
     <div id="teams-list">

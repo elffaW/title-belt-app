@@ -6,8 +6,32 @@ body {
     background-color: aliceblue;
     border: 4rem solid #ffe037;
     border-radius: 50px;
+    font-family: roboto, sans;
 }
 
+hr {
+    background-color: blue;
+    height: 0.5rem;
+    border: 0;
+    margin: 0 -1rem 0 -1rem;
+}
+hr.blue {
+    background-color: blue;
+}
+hr.red {
+    background-color: red;
+}
+
+button {
+    cursor: url("/static/img/stick.png"), auto;
+    border: 1px solid darkslategray;
+    border-radius: 4px;
+    box-shadow: 0 0 1px 1px black;
+    margin-bottom: 0.5rem;
+    vertical-align: middle;
+}
+
+/* CONTENT */
 .main-content {
     border: 1rem solid aliceblue;
     border-radius: 1rem;
@@ -54,26 +78,34 @@ body {
 .game-content > .game-versus {
     font-weight: 400;
 }
-.game-content > .game-versus > .team {
-    font-weight: 700;
-}
 .game-content > .game-date {
     color: darkslategray;
+    font-size: small;
+    margin: -0.4rem;
 }
 
-hr {
-    background-color: blue;
-    height: 0.5rem;
-    border: 0;
-    margin: 0 -1rem 0 -1rem;
+.game-versus {
+    font-size: x-small;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    justify-content: space-around;
 }
-hr.blue {
-    background-color: blue;
-}
-hr.red {
-    background-color: red;
+.game-versus > .matchup > .small-team-name {
+    margin-top: -1px;
+    margin-bottom: -1px;
+    font-size: x-small;
+    justify-content: center;
+    display: flex;
 }
 
-button {
-    cursor: url("/static/img/stick.png"), auto;
+.team {
+    filter: drop-shadow(1px 1px 0.15rem black);
+}
+.team.belt-holder {
+    filter: drop-shadow(1px 1px 0.15rem rgb(196, 166, 0));
+}
+.team-logo-icon {
+    width: 2rem;
 }
