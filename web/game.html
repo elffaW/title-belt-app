@@ -11,18 +11,46 @@
   <div class="game-versus">
     <div class="matchup">
       {% if game.home == game.belt_holder %}
-        <span class="team belt-holder"><img src="https://assets.nhle.com/logos/nhl/svg/{{game.home}}_light.svg" class="team-logo-icon" alt="{{ game.home }} home belt holder" /></span>
+        <span class="team belt-holder">
+          <img
+            src="https://assets.nhle.com/logos/nhl/svg/{{game.home}}_light.svg"
+            class="team-logo-icon"
+            alt="{{ game.home }} home belt holder"
+            title="{{ game.home }} home belt holder"
+          />
+        </span>
       {% elif game.away == game.belt_holder %}
-        <span class="team"><img src="https://assets.nhle.com/logos/nhl/svg/{{game.home}}_light.svg" class="team-logo-icon" alt="{{ game.home }} home" /></span>
+        <span class="team">
+          <img
+            src="https://assets.nhle.com/logos/nhl/svg/{{game.home}}_light.svg"
+            class="team-logo-icon"
+            alt="{{ game.home }} home"
+            title="{{ game.home }} home"
+          />
+        </span>
       {% endif %}
       <p class="small-team-name">{{ game.home }}</p>
     </div>
       vs
     <div class="matchup">
       {% if game.home == game.belt_holder %} 
-        <span class="team"><img src="https://assets.nhle.com/logos/nhl/svg/{{game.away}}_light.svg" class="team-logo-icon" alt="{{ game.away }} away" /></span>
+        <span class="team">
+          <img
+            src="https://assets.nhle.com/logos/nhl/svg/{{game.away}}_light.svg"
+            class="team-logo-icon"
+            alt="{{ game.away }} away"
+            title="{{ game.away }} away"
+          />
+        </span>
       {% elif game.away == game.belt_holder %}
-        <span class="team belt-holder"><img src="https://assets.nhle.com/logos/nhl/svg/{{game.away}}_light.svg" class="team-logo-icon" alt="{{ game.away }} away belt holder" /></span>
+        <span class="team belt-holder">
+          <img
+            src="https://assets.nhle.com/logos/nhl/svg/{{game.away}}_light.svg"
+            class="team-logo-icon"
+            alt="{{ game.away }} away belt holder"
+            title="{{ game.away }} away belt holder"
+          />
+        </span>
       {% endif %}
       <p class="small-team-name">{{ game.away }}</p>
     </div>
