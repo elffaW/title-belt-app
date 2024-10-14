@@ -6,7 +6,7 @@ body {
     background-color: aliceblue;
     border: 4rem solid #ffe037;
     border-radius: 50px;
-    font-family: roboto, sans;
+    font-family: roboto, sans-serif;
     font-variant: small-caps;
 }
 
@@ -32,7 +32,7 @@ button {
     display: flex;
     align-items: center;
     font-variant: small-caps;
-    font-family: roboto, sans;
+    font-family: roboto, sans-serif;
 }
 
 .h5-small {
@@ -147,7 +147,7 @@ button {
 }
 
 .team {
-    filter: drop-shadow(1px 1px 0.15rem black);
+    filter: drop-shadow(1px 1px 0.15rem black) contrast(50%);
 }
 .team.belt-holder {
     filter: drop-shadow(1px 1px 0.15rem rgb(196, 166, 0));
