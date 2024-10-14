@@ -4,8 +4,9 @@ FastAPI service and website for NHL title belt app (see [title-belt-nhl](github.
 
 ## Where??
 
-https://title-belt-app.onrender.com/
-`/docs` for swagger docs
+https://title-belt-app-65075575114.us-east1.run.app/
+
+- `/docs` for swagger docs
 
 ## How??
 
@@ -17,7 +18,7 @@ poetry install --no-root
 ```
 
 ```
-uvicorn main:app --host 0.0.0.0 --port $PORT
+poetry run uvicorn main:app --host 0.0.0.0 --port $PORT --reload
 ```
 
 ## Why??
@@ -29,7 +30,12 @@ So we can do a cool website that shows us the belt holder and stuff.
 
 ### Render
 
+- auto deploy to render on merge to main
+
 ### GCP
+
+- auto deploys to GCP on merge to main
+- pushes docker image
 
 #### Cloud Run
 
@@ -37,12 +43,13 @@ Deploys an app from a docker image, which we need to build (from `Dockerfile`) a
 
 * Auth
 ```sh
-gcloud auth configure-docker us-east1-docker.pkg.dev  # (one time) 
+gcloud auth configure-docker $REGION-docker.pkg.dev  # (one time) 
 gcloud auth login --update-adc  # expires periodically (24 hours?)
-gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://us-east1-docker.pkg.dev
+gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://$REGION-docker.pkg.dev  # expires periodically
 ```
-* Push docker image
+* Build and Push docker image
 ```
+docker build . -t <image>
 docker push <image>
 ```
 * Deploy app
