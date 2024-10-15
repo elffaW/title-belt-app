@@ -3,5 +3,10 @@
   <button class="tab-button" aria-selected="false" role="tab" hx-get="/teams">Next Chance</button>
 </div>
 <div id="teams-container" role="tabpanel">
-  <p>Coming Soon...</p>
+  {% for rank in rankings %}
+    <div class="team-content">
+      <img src="https://assets.nhle.com/logos/nhl/svg/{{rank}}_light.svg" class="team-logo-icon" alt="{{ rank }}" title="{{ rank }}" />
+      {{rank}}: {{rankings[rank]}}
+    </div>
+  {% endfor %}
 </div>

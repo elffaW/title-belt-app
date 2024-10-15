@@ -81,7 +81,8 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: calc(vw - 12rem);
+    /* max-width: calc(100vw - 12rem); */
+    max-width: 100%;
 }
 .belt-holder-details .belt-path {
     overflow-x: auto;
@@ -125,6 +126,9 @@ button {
     margin-top: 1rem;
     margin-bottom: 0;
     z-index: 9;
+    &:hover {
+        background-color: #ffe037;
+    }
 }
 #teams-info .tab-button.active {
     border-bottom: 4px solid aliceblue;
@@ -136,6 +140,7 @@ button {
     width: 100%;
     margin-top: -0.25rem;
     padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
 }
 
 .team-content {
