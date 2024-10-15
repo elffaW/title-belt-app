@@ -1,5 +1,11 @@
 <div class="games-row">
-  {% for game in game_list %}
-    {% include "game.html" %}
-  {% endfor %}
+  {% if games_complete == true %}
+    {% for game in game_list %}
+      {% include "game_complete.html" %}
+    {% endfor %}
+  {% else %}
+    {% for game in game_list %}
+      {% include "game.html" %}
+    {% endfor %}
+  {% endif %}
 </div>

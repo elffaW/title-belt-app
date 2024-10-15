@@ -7,10 +7,10 @@
     <p class="pre-right">right</p>
   {% endif %}
 </div> -->
-<div class="game-content {{ 'on-shortest-path' if game.on_shortest_path else '' }}">
+<div class="game-content">
   <div class="game-versus">
     <div class="matchup">
-      {% if game.home == game.belt_holder %}
+      {% if game.home_score > game.away_score %}
         <span class="team belt-holder">
           <img
             src="https://assets.nhle.com/logos/nhl/svg/{{game.home}}_light.svg"
@@ -19,7 +19,8 @@
             title="{{ game.home }} home belt holder"
           />
         </span>
-      {% elif game.away == game.belt_holder %}
+        <p class="small-team-name winner">{{ game.home }}</p>
+      {% elif game.away_score > game.home_score %}
         <span class="team">
           <img
             src="https://assets.nhle.com/logos/nhl/svg/{{game.home}}_light.svg"
@@ -28,12 +29,12 @@
             title="{{ game.home }} home"
           />
         </span>
+        <p class="small-team-name">{{ game.home }}</p>
       {% endif %}
-      <p class="small-team-name">{{ game.home }}</p>
     </div>
-    <p>vs</p>
+    <p class="game-score">{{ game.home_score }} - {{game.away_score}}</p>
     <div class="matchup">
-      {% if game.home == game.belt_holder %} 
+      {% if game.home_score > game.away_score %} 
         <span class="team">
           <img
             src="https://assets.nhle.com/logos/nhl/svg/{{game.away}}_light.svg"
@@ -42,7 +43,8 @@
             title="{{ game.away }} away"
           />
         </span>
-      {% elif game.away == game.belt_holder %}
+        <p class="small-team-name">{{ game.away }}</p>
+      {% elif game.away_score > game.home_score %}
         <span class="team belt-holder">
           <img
             src="https://assets.nhle.com/logos/nhl/svg/{{game.away}}_light.svg"
@@ -51,8 +53,8 @@
             title="{{ game.away }} away belt holder"
           />
         </span>
+        <p class="small-team-name winner">{{ game.away }}</p>
       {% endif %}
-      <p class="small-team-name">{{ game.away }}</p>
     </div>
   </div>
   <div class="game-date">
