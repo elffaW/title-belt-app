@@ -60,20 +60,20 @@ async def get_path_to_belt(team_id: str, request: Request):
 
     return templates.TemplateResponse("team.html", context)
 
-@router.get("/schedule/{team_id}")
-def get_schedule(team_id: str, request: Request):
-    if team_id not in [t for t in NhlTeams.__members__.keys()]:
-        raise HTTPException(status_code=404, detail=f"Team {team_id} not found")
+# @router.get("/schedule/{team_id}")
+# def get_schedule(team_id: str, request: Request):
+#     if team_id not in [t for t in NhlTeams.__members__.keys()]:
+#         raise HTTPException(status_code=404, detail=f"Team {team_id} not found")
 
-    games = Schedule(team_id).get_matches_for_team(team_id)
+#     games = Schedule(team_id).get_matches_for_team(team_id)
 
-    context = {
-        "request": request,
-        "team": NhlTeams[team_id],
-        "schedule": games,
-    }
+#     context = {
+#         "request": request,
+#         "team": NhlTeams[team_id],
+#         "schedule": games,
+#     }
 
-    return templates.TemplateResponse("schedule.html", context)
+#     return templates.TemplateResponse("schedule.html", context)
 
 @router.get("/teams")
 def get_teams():

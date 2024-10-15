@@ -23,19 +23,25 @@
           </h4>
         </div>
         <div class="belt-holder-details">
-          <span class="h5-small">Next Title Bout</span>
-          {% with game=next_bout %}
-            {% include "game.html" %}
-          {% endwith %}
+          <div class="belt-path-container">
+            <span class="h5-small">Belt Path So Far...</span>
+            <div class="belt-path">
+              {% with game_list=belt_path, games_complete=true %}
+                  {% include "games_row.html" %}
+              {% endwith %}
+            </div>
+          </div>
+          <div class="belt-next-bout">
+            <span class="h5-small">Next Title Bout</span>
+            {% with game=next_bout %}
+              {% include "game.html" %}
+            {% endwith %}
+          </div>
         </div>
       </div>
     </div>
     <hr class="red" />
-    <h3>All Teams</h3>
-    <div id="teams-list">
-      {% for team in teams %}
-        {% include "team.html" %}
-      {% endfor %}
+    <div id="teams-info" hx-get="/teams" hx-trigger="load delay:100ms" hx-target="#teams-info" hx-swap="innerHTML">
     </div>
   </div>
 </body>

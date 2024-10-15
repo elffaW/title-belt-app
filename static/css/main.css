@@ -70,12 +70,72 @@ button {
 
 .belt-holder-info > .belt-holder-details {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    align-items: flex-start;
     margin-bottom: 1rem;
 }
 .belt-holder-details > .game-content {
     margin: 0;
+}
+.belt-holder-details .belt-path-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: calc(vw - 12rem);
+}
+.belt-holder-details .belt-path {
+    overflow-x: auto;
+    /* max-width: 50%; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.belt-holder-details > .belt-next-bout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.game-score {
+    font-weight: 700;
+    font-size: small;
+    margin-bottom: 0;
+}
+
+#teams-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+#teams-info > .teams-tabs {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    float: left;
+}
+#teams-info .tab-button {
+    display: flex;
+    align-items: center;
+    width: 12rem;
+    padding: 1rem;
+    font-size: large;
+    border: 4px solid #ffe037;
+    background-color: rgb(210, 218, 223);
+    outline: none;
+    box-shadow: none;
+    margin-top: 1rem;
+    margin-bottom: 0;
+    z-index: 9;
+}
+#teams-info .tab-button.active {
+    border-bottom: 4px solid aliceblue;
+    background-color: aliceblue;
+}
+#teams-info > #teams-container {
+    border: 4px solid #ffe037;
+    border-radius: 8px;
+    width: 100%;
+    margin-top: -0.25rem;
+    padding-top: 1.5rem;
 }
 
 .team-content {
@@ -84,7 +144,7 @@ button {
 }
 
 .team-shortest-path {
-    overflow-x: scroll;
+    overflow-x: auto;
     margin-bottom: 1rem;
 }
 
@@ -144,6 +204,9 @@ button {
     font-size: x-small;
     justify-content: center;
     display: flex;
+    &.winner {
+        font-weight: 700;
+    }
 }
 
 .team {

@@ -1,0 +1,11 @@
+<div class="teams-tabs" role="tablist">
+  <button class="tab-button" aria-selected="false" role="tab" hx-get="/rankings">Current Rankings</button>
+  <button class="tab-button active" aria-selected="true" role="tab" hx-get="/teams">Next Chance</button>
+</div>
+<div id="teams-container" role="tabpanel">
+  {% for team in teams %}
+    <div id="{{team.name}}-content" class="team-content">
+      {% include "team.html" %}
+    </div>
+  {% endfor %}
+</div>

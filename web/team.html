@@ -1,18 +1,16 @@
-<div id="{{team.name}}-content" class="team-content">
-  <button hx-get="api/path/{{team.name}}" hx-trigger="click" hx-target="#{{team.name}}-content">
-    <img src="https://assets.nhle.com/logos/nhl/svg/{{team.name}}_light.svg" class="team-logo-icon" alt="{{ team.value }}" title="{{ team.value }}" />
-    {{ team.value }}
-  </button>
-  <div>
-    {% if numGames > 0 %}
-      <p>Minimum {{ numGames }} games</p>
-      <div class="team-shortest-path">
-        {% for game_list in games %}
-          {% include "games_row.html" %}
-        {% endfor %}
-      </div>
-    {% elif numGames == 0 %}
-      <p>Already has the belt!</p>
-    {% endif %}
-  </div>
+<button hx-get="api/path/{{team.name}}" hx-trigger="click" hx-target="#{{team.name}}-content">
+<img src="https://assets.nhle.com/logos/nhl/svg/{{team.name}}_light.svg" class="team-logo-icon" alt="{{ team.value }}" title="{{ team.value }}" />
+{{ team.value }}
+</button>
+<div>
+{% if numGames > 0 %}
+    <p>Minimum {{ numGames }} games</p>
+    <div class="team-shortest-path">
+    {% for game_list in games %}
+        {% include "games_row.html" %}
+    {% endfor %}
+    </div>
+{% elif numGames == 0 %}
+    <p>Already has the belt!</p>
+{% endif %}
 </div>
