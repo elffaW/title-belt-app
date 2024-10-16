@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class NhlTeams(str, Enum):
     ANA = "Anaheim Ducks"
     BOS = "Boston Bruins"

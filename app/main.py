@@ -1,13 +1,12 @@
-from datetime import date, timedelta
 import functools
+from datetime import date, timedelta
 
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from title_belt_nhl.schedule import Match, Schedule
 from title_belt_nhl.service.nhl_api import getFullSchedule
 
-from app import templates
-from app import api
+from app import api, templates
 from app.models import NhlTeams
 
 app = FastAPI()
@@ -24,7 +23,7 @@ def _build_full_page_context(request: Request):
     schedule = Schedule("")
     holder = schedule.belt_holder
     selected_team = holder
-    
+
     league_schedule = getFullSchedule(schedule.season)
 
     return {
@@ -45,6 +44,7 @@ async def root(request: Request):
     context = _build_full_page_context(request)
     return templates.TemplateResponse("home.html", context)
 
+
 @app.get("/rankings")
 def get_rankings(request: Request):
     context = _build_full_page_context(request)
@@ -53,7 +53,7 @@ def get_rankings(request: Request):
     for i, game in enumerate(belt_path):
         days_between_games = (date.today() - game.date_obj).days
         if i < len(belt_path) - 1:
-            days_between_games = belt_path[i+1].serial_date - game.serial_date
+            days_between_games = belt_path[i + 1].serial_date - game.serial_date
         if i == len(belt_path) - 1 and len(belt_path) == 82:
             # last game of season, don't continue adding belt days
             days_between_games = 1
@@ -66,14 +66,18 @@ def get_rankings(request: Request):
                 rankings_dict[game.away] = 0
             rankings_dict[game.away] += days_between_games
 
-    context["rankings"] = dict(sorted(rankings_dict.items(), key=lambda item: item[1], reverse=True))
+    context["rankings"] = dict(
+        sorted(rankings_dict.items(), key=lambda item: item[1], reverse=True)
+    )
 
     return templates.TemplateResponse("teams_ranking.html", context)
+
 
 @app.get("/teams")
 def get_rankings(request: Request):
     context = _build_full_page_context(request)
     return templates.TemplateResponse("teams_next_chance.html", context)
+
 
 @app.get("/heartbeat")
 def heartbeat():
