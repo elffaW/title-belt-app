@@ -47,55 +47,50 @@ button {
     margin: -1rem;
 }
 
-.content-container {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    margin-left: 1rem;
-}
 .belt-holder-info {
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
-}
-.belt-holder-info > .belt-holder > h4 {
-    margin-top: -0.15rem;
-}
-.belt-holder-info > .belt-holder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-right: 2rem;
+    align-items: flex-start;
+    width: 100%;
+    & > .belt-holder-details {
+        width: min-content;
+        flex: 1 1 0;
+        min-width: 0;
+        margin: 0 1rem;
+        .belt-path-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            &  > .belt-path {
+                width: 100%;
+                & > .games-row {
+                    overflow-x: auto;
+                    width: 100%;
+                }
+            }
+        }
+    }
+    & > .belt-holder > h4 {
+        margin-top: -0.15rem;
+        text-align: center;
+    }
+    & > .belt-holder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: min-content;
+        flex: 0 1 auto;
+        margin: 1rem 1rem 0 1rem;
+    }
+    & > .belt-next-bout {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: min-content;
+        flex: 0 1 auto;
+    }
 }
 
-.belt-holder-info > .belt-holder-details {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    margin-bottom: 1rem;
-}
-.belt-holder-details > .game-content {
-    margin: 0;
-}
-.belt-holder-details .belt-path-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* max-width: calc(100vw - 12rem); */
-    max-width: 100%;
-}
-.belt-holder-details .belt-path {
-    overflow-x: auto;
-    /* max-width: 50%; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.belt-holder-details > .belt-next-bout {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 .game-score {
     font-weight: 700;
     font-size: small;
@@ -106,41 +101,44 @@ button {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-}
-#teams-info > .teams-tabs {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    float: left;
-}
-#teams-info .tab-button {
-    display: flex;
-    align-items: center;
-    width: 12rem;
-    padding: 1rem;
-    font-size: large;
-    border: 4px solid #ffe037;
-    background-color: rgb(210, 218, 223);
-    outline: none;
-    box-shadow: none;
-    margin-top: 1rem;
-    margin-bottom: 0;
-    z-index: 9;
-    &:hover {
-        background-color: #ffe037;
+    & > .teams-tabs {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        float: left;
     }
-}
-#teams-info .tab-button.active {
-    border-bottom: 4px solid aliceblue;
-    background-color: aliceblue;
-}
-#teams-info > #teams-container {
-    border: 4px solid #ffe037;
-    border-radius: 8px;
-    width: 100%;
-    margin-top: -0.25rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    .tab-button {
+        display: flex;
+        align-items: center;
+        width: 12rem;
+        padding: 1rem;
+        font-size: large;
+        border: 4px solid #ffe037;
+        background-color: rgb(210, 218, 223);
+        outline: none;
+        box-shadow: none;
+        margin-top: 1rem;
+        margin-bottom: 0;
+        z-index: 9;
+        &:hover {
+            background-color: #ffe037;
+        }
+    }
+    .tab-button.active {
+        border-bottom: 4px solid aliceblue;
+        background-color: aliceblue;
+    }
+    & > #teams-container {
+        border: 4px solid #ffe037;
+        border-radius: 8px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 100%;
+        margin-top: -0.25rem;
+        padding-top: 1.5rem;
+        padding-bottom: 1rem;
+    }
 }
 
 .team-content {
@@ -159,19 +157,6 @@ button {
     margin-bottom: 0.5rem;
 }
 
-/* .games-path > .pre-game {
-    align-items: center;
-    width: 8rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    justify-content: center;
-}
-
-.games-path > .pre-game > p {
-    flex: auto;
-} */
 .game-content {
     display: flex;
     align-items: center;
@@ -182,19 +167,18 @@ button {
     padding: 0.5rem;
     width: 8rem;
     min-width: 8rem;
+    & > .game-versus {
+        font-weight: 400;
+    }
+    & > .game-date {
+        color: darkslategray;
+        font-size: small;
+        margin: -0.4rem;
+    }
+    &.on-shortest-path {
+        border: 3px solid blue;
+    }
 }
-.game-content.on-shortest-path {
-    border: 3px solid blue;
-}
-.game-content > .game-versus {
-    font-weight: 400;
-}
-.game-content > .game-date {
-    color: darkslategray;
-    font-size: small;
-    margin: -0.4rem;
-}
-
 .game-versus {
     font-size: x-small;
     display: flex;
@@ -202,23 +186,23 @@ button {
     margin-bottom: 0.5rem;
     width: 100%;
     justify-content: space-around;
-}
-.game-versus > .matchup > .small-team-name {
-    margin-top: -1px;
-    margin-bottom: -1px;
-    font-size: x-small;
-    justify-content: center;
-    display: flex;
-    &.winner {
-        font-weight: 700;
+    & > .matchup > .small-team-name {
+        margin-top: -1px;
+        margin-bottom: -1px;
+        font-size: x-small;
+        justify-content: center;
+        display: flex;
+        &.winner {
+            font-weight: 700;
+        }
     }
 }
 
 .team {
     filter: drop-shadow(1px 1px 0.15rem black) contrast(50%);
-}
-.team.belt-holder {
-    filter: drop-shadow(1px 1px 0.15rem rgb(196, 166, 0));
+    &.belt-holder {
+        filter: drop-shadow(1px 1px 0.15rem rgb(196, 166, 0));
+    }
 }
 .team-logo-icon {
     width: 2rem;

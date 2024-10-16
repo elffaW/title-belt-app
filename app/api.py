@@ -6,6 +6,7 @@ from app.models import NhlTeams
 
 router = APIRouter(prefix="/api")
 
+
 @router.get("/belt_holder")
 async def get_belt_holder(request: Request):
     schedule = Schedule("")
@@ -17,6 +18,7 @@ async def get_belt_holder(request: Request):
         "season": schedule.get_season_pretty(),
     }
     return templates.TemplateResponse("home.html", context)
+
 
 @router.get("/path/{team_id}")
 async def get_path_to_belt(team_id: str, request: Request):
@@ -40,7 +42,9 @@ async def get_path_to_belt(team_id: str, request: Request):
         num_games = len(path_games)
         sorted_path = []
         for match_list in path_games:
-            sorted_path.append(sorted(match_list, key=lambda g: g.on_shortest_path, reverse=True))
+            sorted_path.append(
+                sorted(match_list, key=lambda g: g.on_shortest_path, reverse=True)
+            )
         # for depth, match_list in enumerate(path_games):
         #     print(f"{depth}: {len(match_list)}")
         #     for match in match_list:
@@ -60,6 +64,7 @@ async def get_path_to_belt(team_id: str, request: Request):
 
     return templates.TemplateResponse("team.html", context)
 
+
 # @router.get("/schedule/{team_id}")
 # def get_schedule(team_id: str, request: Request):
 #     if team_id not in [t for t in NhlTeams.__members__.keys()]:
@@ -74,6 +79,7 @@ async def get_path_to_belt(team_id: str, request: Request):
 #     }
 
 #     return templates.TemplateResponse("schedule.html", context)
+
 
 @router.get("/teams")
 def get_teams():
