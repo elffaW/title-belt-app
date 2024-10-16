@@ -14,30 +14,28 @@
     <h1>NHL Title Belt {{ season }}</h1>
     <hr class="blue" />
     <h3>Current Belt Holder</h3>
-    <div class="content-container">
-      <div class="belt-holder-info">
-        <div class="belt-holder">
-          <img src="https://assets.nhle.com/logos/nhl/svg/{{belt_holder.name}}_light.svg" class="team-logo" alt="{{ belt_holder.value }}" title="{{ belt_holder.value }}" />
-          <h4>
-            {{ belt_holder.value }}
-          </h4>
-        </div>
-        <div class="belt-holder-details">
-          <div class="belt-path-container">
-            <span class="h5-small">Belt Path So Far...</span>
-            <div class="belt-path">
-              {% with game_list=belt_path, games_complete=true %}
-                  {% include "games_row.html" %}
-              {% endwith %}
-            </div>
-          </div>
-          <div class="belt-next-bout">
-            <span class="h5-small">Next Title Bout</span>
-            {% with game=next_bout %}
-              {% include "game.html" %}
+    <div class="belt-holder-info">
+      <div class="belt-holder">
+        <img src="https://assets.nhle.com/logos/nhl/svg/{{belt_holder.name}}_light.svg" class="team-logo" alt="{{ belt_holder.value }}" title="{{ belt_holder.value }}" />
+        <h4>
+          {{ belt_holder.value }}
+        </h4>
+      </div>
+      <div class="belt-holder-details">
+        <div class="belt-path-container">
+          <span class="h5-small">The Path of the Belt</span>
+          <div class="belt-path">
+            {% with game_list=belt_path, games_complete=true %}
+                {% include "games_row.html" %}
             {% endwith %}
           </div>
         </div>
+      </div>
+      <div class="belt-next-bout">
+        <span class="h5-small">Next Title Bout</span>
+        {% with game=next_bout %}
+          {% include "game.html" %}
+        {% endwith %}
       </div>
     </div>
     <hr class="red" />
