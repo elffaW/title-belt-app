@@ -35,7 +35,7 @@ def _build_full_page_context(request: Request):
         "season": schedule.get_season_pretty(),
         "schedule": schedule,
         "next_bout": schedule.find_match(holder, schedule.from_date),
-        "belt_path": Schedule.find_belt_path(league_schedule),
+        "belt_path": reversed(Schedule.find_belt_path(league_schedule)),
     }
 
 
