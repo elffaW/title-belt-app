@@ -35,7 +35,7 @@ def _build_full_page_context(request: Request):
         "season": schedule.get_season_pretty(),
         "schedule": schedule,
         "next_bout": schedule.find_match(holder, schedule.from_date),
-        "belt_path": reversed(Schedule.find_belt_path(league_schedule)),
+        "belt_path": list(reversed(Schedule.find_belt_path(league_schedule))),
     }
 
 
@@ -48,7 +48,7 @@ async def root(request: Request):
 @app.get("/rankings")
 def get_rankings(request: Request):
     context = _build_full_page_context(request)
-    belt_path: list[Match] = context["belt_path"]
+    belt_path: list[Match] = list(reversed(context["belt_path"]))
     rankings_dict = {}
     for i, game in enumerate(belt_path):
         days_between_games = (date.today() - game.date_obj).days
