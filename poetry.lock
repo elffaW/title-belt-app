@@ -986,13 +986,13 @@ full = ["httpx (>=0.22.0)", "itsdangerous", "jinja2", "python-multipart (>=0.0.7
 
 [[package]]
 name = "title-belt-nhl"
-version = "0.3.5"
+version = "0.3.6"
 description = "CLI tool to compute NHL Title Belt info."
 optional = false
 python-versions = "<4.0,>=3.10"
 files = [
-    {file = "title_belt_nhl-0.3.5-py3-none-any.whl", hash = "sha256:663c5258e45da8753396242add33c06fb485fe281adb2c22ba8f6304c636ba0d"},
-    {file = "title_belt_nhl-0.3.5.tar.gz", hash = "sha256:7cc622b1ff0cbc5c18032afe743ecf532dd010ae4336f4c687bab70467ec5bb7"},
+    {file = "title_belt_nhl-0.3.6-py3-none-any.whl", hash = "sha256:1dc59784bb23f562bbd25e236fa13460ebd8e31c4c1b706953995b399b4a9ac0"},
+    {file = "title_belt_nhl-0.3.6.tar.gz", hash = "sha256:c467d1b634cb2ba6c1a3c9340c94f9b2fa3e91f37885cf60bd06f4403767223e"},
 ]
 
 [package.dependencies]
@@ -1395,4 +1395,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "11210f56f496b01a6b13e3deed5846a73259c0f700a9bded71a44e5b6eba111d"
+content-hash = "35f0f79d30f61a5f60a3c828e662e837e6bddd07948340ddedddabc9c03971f1"
